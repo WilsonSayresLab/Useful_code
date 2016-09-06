@@ -681,25 +681,25 @@ sbatch NameOfSBATCHscript.sh
 # Output:
 # 	Table of allele counts at the given sites. Tab-delimited that is readable by R and compatible with Mamba (downstream tool developed for allele-specific expression analysis)
 # Example command: $java -jar GenomeAnalysisTK.jar -R reference.fasta -T ASEReadCounter -o file_name.csv -I input.bam -sites sites.vcf -U ALLOW_N_CIGAR_READS -minDepth 10 --minMappingQuality 10 --minBaseQuality 2 -drf DuplicateRead
-# java 												            program called
-# -jar 												            declares jar file to follow
-# GenomeAnalysisTK.jar 								            path to GATK jar file
-# -R 												            declares reference genome
-# reference.fasta 									            path to reference genome in fasta format
-# -T 												            tool
-# ASEReadCounter 									            this tools filters out duplicate reads by default. However, some ASE methods recommend including duplicate reads in the analysis, so the DuplicateRead filter can be disabled using the "-drf DuplicateRead" flag in the command-line.
-# -o 												            output 
-# file_name.csv 									            name of output file for each sample in csv format (must include .csv)
-# -I 												            input
-# input.bam 										            input BAM file to be used 
-# -sites 											            declares vcf file to follow
-# sites.vcf 										            vcf file that was generated in pervious step 
-# -U 												            Filtering options:
-# ALLOW_N_CIGAR_READS 											allow N cigar reads
-# -minDepth 10                                                 	minimum depth
-# --minMappingQuality 10										minimum read mapping quality
-# --minBaseQuality 2 											minimum base quality
-# -drf DuplicateRead											like most GATK tools, this tools filters out duplicate reads by default. DuplicateRead filter can be disabled using the "-drf DuplicateRead" flag in the command-line.
+# java																																		program called
+# -jar																																		declares jar file to follow
+# GenomeAnalysisTK.jar 								            												path to GATK jar file
+# -R 												            																	declares reference genome
+# reference.fasta 									            													path to reference genome in fasta format
+# -T 												            																	tool
+# ASEReadCounter 									            														this tools filters out duplicate reads by default. However, some ASE methods recommend including duplicate reads in the analysis, so the DuplicateRead filter can be disabled using the "-drf DuplicateRead" flag in the command-line.
+# -o 												            																	output 
+# file_name.csv 									          															name of output file for each sample in csv format (must include .csv)
+# -I 												            																	input
+# input.bam 										          			 													input BAM file to be used 
+# -sites 											            																declares vcf file to follow
+# sites.vcf 										          																vcf file that was generated in pervious step 
+# -U 												            																	Filtering options:
+# ALLOW_N_CIGAR_READS 																										allow N cigar reads
+# -minDepth 10                                                 						minimum depth
+# --minMappingQuality 10																									minimum read mapping quality
+# --minBaseQuality 2 																											minimum base quality
+# -drf DuplicateRead																											like most GATK tools, this tools filters out duplicate reads by default. DuplicateRead filter can be disabled using the "-drf DuplicateRead" flag in the command-line.
 
 # SBATCH script - 
 sbatch NameOfSBATCHscript.sh 

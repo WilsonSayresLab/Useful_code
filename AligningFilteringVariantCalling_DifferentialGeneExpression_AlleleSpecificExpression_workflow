@@ -489,24 +489,24 @@ sbatch NameOfSBATCHscript.sh
 # At SplitNCigarReads, mapping qualities are also reassigned because STAR assigns good alignments a MAPQ of 255 which is meaningless to GATK. 
 # To correct for this, GATK’s ReassignOneMappingQuality read filter, is used to reassign all good alignments to the default value of 60. 
 # Example command: $java -Xmx24g -Djava.io.tmpdir=~/temp/ -jar /GenomeAnalysisTK-3.5/GenomeAnalysisTK.jar -T SplitNCigarReads -R /reference/referenceGenome.fa -I sampleID.sorted.markdup.addReadGr.bam -o sampleID.sorted.markdup.addReadGr.split.bam -rf ReassignOneMappingQuality -RMQF 255 -RMQT 60 -U ALLOW_N_CIGAR_READS
-# java												                    program called 
-# -Xmx8g 											            declares memory 
-# -Djava.io.tmpdir=~/temp/ 							            Temporary directory for extra storage  
-# -jar 												            declares jar file type 
-# /GenomeAnalysisTK-3.5/GenomeAnalysisTK.jar 		            GATK's GenomeAnalysisTK.jar tool 
-# -T 												            declares tool 
-# SplitNCigarReads 									            splits reads into exon segments (getting rid of Ns but maintaining grouping information) and hard-clip any sequences overhanging into the intronic regions
-# -R 												            reference 
-# /reference/referenceGenome.fa 					            path and genome reference file 
-# -I 												            input 
-# sampleID_pass2.sorted.rg.dupsMarked.bam 			            input bam file, for each sample, the pass2. sorted. read groups add and duplicates have been marked. 	
-# -o												            output	
-# sampleID_pass2.sorted.rg.dupsMarked.split.bam 	            clearly identify the output file name. include the sample ID and .bam 	
-# -rf 												            declares tool 	
-# ReassignOneMappingQuality 						            ReassignOneMappingQuality read filter to reassign all good alignments to the default value of 60
-# -RMQF 255 										            STAR assigns good alignments a MAPQ of 255 
-# -RMQT 60 											            reassign all good alignments to the default value of 60 	
-# -U ALLOW_N_CIGAR_READS							            reads with N cigars should be allowed	
+# java												                                        program called 
+# -Xmx8g 											                                        declares memory 
+# -Djava.io.tmpdir=~/temp/ 							                              Temporary directory for extra storage  
+# -jar 												                                        declares jar file type 
+# /GenomeAnalysisTK-3.5/GenomeAnalysisTK.jar 		                      GATK's GenomeAnalysisTK.jar tool 
+# -T 												                                          declares tool 
+# SplitNCigarReads 									                                  splits reads into exon segments (getting rid of Ns but maintaining grouping information) and hard-clip any sequences overhanging into the intronic regions
+# -R 												                                          reference 
+# /reference/referenceGenome.fa 					                            path and genome reference file 
+# -I 												                                          input 
+# sampleID_pass2.sorted.rg.dupsMarked.bam 			                      input bam file, for each sample, the pass2. sorted. read groups add and duplicates have been marked. 	
+# -o												                                          output	
+# sampleID_pass2.sorted.rg.dupsMarked.split.bam 	                    clearly identify the output file name. include the sample ID and .bam 	
+# -rf 												                                        declares tool 	
+# ReassignOneMappingQuality 						                              ReassignOneMappingQuality read filter to reassign all good alignments to the default value of 60
+# -RMQF 255 										                                      STAR assigns good alignments a MAPQ of 255 
+# -RMQT 60 											                                      reassign all good alignments to the default value of 60 	
+# -U ALLOW_N_CIGAR_READS							                                reads with N cigars should be allowed	
 
 # SBATCH script - 
 sbatch NameOfSBATCHscript.sh 
@@ -518,21 +518,21 @@ sbatch NameOfSBATCHscript.sh
 # Cuffdiff is used to find significant changes in transcript expression, splicing, and promoter use. 
 # Cuffdiff uses a gene annotation file downloaded with a sbatch script from UCSC hg19
 # Example command: $cuffdiff -use-sample-sheet -o diff_out -b reference.fa -p 8 --library-type fr-firststrand -L set1,set2 -u refence.gtf sampleSet.txt
-# cuffdiff 											            program in cufflinks package that identifies if genes are differentially expressed 
-# -use-sample-sheet 								            tells the program to use a text file containing the path to the samples and the group_id 
-# -o 												            output
-# diff_out 											            path and name of output directory where all of the output files from the cuffdiff program will be placed
-# -b 												            Providing Cufflinks with the multifasta file your reads were mapped to via this option instructs it to run the bias detection and correction algorithm which can significantly improve accuracy of transcript abundance estimates
-# reference.fa 										            path and name of reference.fasta which the files were mapped to
-# -p 												            Use this many threads to align reads. The default is 1
-# 8 												            declared 8 threads 
-# --library-type												* This option depends on the data * unstranded RNA-seq data, Cufflinks/Cuffdiff require spliced alignments with XS strand attribute
-# fr-firststrand												* This option depends on the data * should be used for the standard dUTP protocol, including Illumina’s stranded Tru-Seq.
-# -L 												            Specify a label for each sample, which will be included in various output files produced by Cuffdiff.
-# set1,set2 										            Must have at least 2 labels. (i.e male,female)	
-# -u 												            Tells Cufflinks to do an initial estimation procedure to more accurately weight reads mapping to multiple locations in the genome
-# refence.gtf 										            path and name to the gene annotation file. 
-# sampleSet.txt										            text file containing the list of samples
+# cuffdiff 											                                    program in cufflinks package that identifies if genes are differentially expressed 
+# -use-sample-sheet 								                                tells the program to use a text file containing the path to the samples and the group_id 
+# -o 												                                        output
+# diff_out 											                                    path and name of output directory where all of the output files from the cuffdiff program will be placed
+# -b 												                                        Providing Cufflinks with the multifasta file your reads were mapped to via this option instructs it to run the bias detection and correction algorithm which can significantly improve accuracy of transcript abundance estimates
+# reference.fa 										                                  path and name of reference.fasta which the files were mapped to
+# -p 												                                        Use this many threads to align reads. The default is 1
+# 8 												                                        declared 8 threads 
+# --library-type												                            * This option depends on the data * unstranded RNA-seq data, Cufflinks/Cuffdiff require spliced alignments with XS strand attribute
+# fr-firststrand												                            * This option depends on the data * should be used for the standard dUTP protocol, including Illumina’s stranded Tru-Seq.
+# -L 												                                        Specify a label for each sample, which will be included in various output files produced by Cuffdiff.
+# set1,set2 										                                    Must have at least 2 labels. (i.e male,female)	
+# -u 												                                        Tells Cufflinks to do an initial estimation procedure to more accurately weight reads mapping to multiple locations in the genome
+# refence.gtf 										                                  path and name to the gene annotation file. 
+# sampleSet.txt										                                  text file containing the list of samples
 
 # SBATCH script - 
 sbatch NameOfSBATCHscript.sh 
@@ -553,22 +553,22 @@ sbatch NameOfSBATCHscript.sh
 #		4. Assigns samples genotypes. For each potentially variant site, the program applies Bayes' rule, using the likelihoods of alleles given the read data to calculate the likelihoods of each genotype per sample given the read data observed for that sample. 
 #		   The most likely genotype is then assigned to the sample.
 # Example command: $java -Xmx24g -Djava.io.tmpdir=~/temp/ -jar /GenomeAnalysisTK-3.5/GenomeAnalysisTK.jar -T HaplotypeCaller -R /reference/referenceGenome.fa -I sampleID.sorted.markdup.addReadGr.split.bam -stand_call_conf 30.0 -stand_emit_conf 30.0  -o sampleID.gvcf
-# java												            program called 
-# -Xmx8g 											            declares memory 
-# -Djava.io.tmpdir=~/temp/ 							            Temporary directory for extra storage  
-# -jar 												            declares jar file type 
-# /GenomeAnalysisTK-3.5/GenomeAnalysisTK.jar 		            GATK's GenomeAnalysisTK.jar tool 
-# -T 												            declares tool 
-# HaplotypeCaller 									            Calls SNPs and indels simultaneously via local de-novo assembly of haplotypes in an active region
-# -R 												            reference
-# /reference/referenceGenome.fa 					            path and genome reference file
-# -I 												            input
-# sampleID_pass2.sorted.rg.dupsMarked.split.bam  	            input bam file, for each sample, the pass2. sorted. read groups added, duplicates have been marked, and SplitNCigarReads has been preformed
-# -stand_call_conf 30.0 							            The minimum phred-scaled confidence threshold at which variants should be called
-# -stand_emit_conf 30.0 							            The minimum phred-scaled confidence threshold at which variants should be emitted (and filtered with LowQual if less than the calling threshold)
-# --emitRefConfidence GVCF 							            Mode for emitting reference confidence scores
-# -o                                                            indicates output 
-# sampleID.gvcf                                                 path and name of sample and followed by .gvcf
+# java												                                      program called 
+# -Xmx8g 											                                      declares memory 
+# -Djava.io.tmpdir=~/temp/ 							                            Temporary directory for extra storage  
+# -jar 												                                      declares jar file type 
+# /GenomeAnalysisTK-3.5/GenomeAnalysisTK.jar 		                    GATK's GenomeAnalysisTK.jar tool 
+# -T 												                                        declares tool 
+# HaplotypeCaller 									                                Calls SNPs and indels simultaneously via local de-novo assembly of haplotypes in an active region
+# -R 												                                        reference
+# /reference/referenceGenome.fa 					                          path and genome reference file
+# -I 												                                        input
+# sampleID_pass2.sorted.rg.dupsMarked.split.bam  	                  input bam file, for each sample, the pass2. sorted. read groups added, duplicates have been marked, and SplitNCigarReads has been preformed
+# -stand_call_conf 30.0 							                              The minimum phred-scaled confidence threshold at which variants should be called
+# -stand_emit_conf 30.0 							                              The minimum phred-scaled confidence threshold at which variants should be emitted (and filtered with LowQual if less than the calling threshold)
+# --emitRefConfidence GVCF 							                            Mode for emitting reference confidence scores
+# -o                                                                indicates output 
+# sampleID.gvcf                                                     path and name of sample and followed by .gvcf
 
 # SBATCH script - 
 sbatch NameOfSBATCHscript.sh 
@@ -580,18 +580,18 @@ sbatch NameOfSBATCHscript.sh
 # Merge the gvcf sample files into one raw vcf file. 
 # Input the --variant sampleID.gvcf in the order in which you want them in your raw vcf output file
 # Example command: $java -Xmx16g -jar GenomeAnalysisTK.jar -T GenotypeGVCFs -R referenceGenome.fna --variant sampleID.rmdup.gvcf --variant sampleID.rmdup.gvcf  -o Project.raw.vcf
-# java												            program called 
-# -Xmx16g 											            declares memory
-# GenomeAnalysisTK.jar 								            path to GATK jar file 
-# -T												            declares that a tool command will follow 
-# GenotypeGVCFs										            GenotypeGVCFs merges gVCF records that were produced in the previous step. This tool performs the multi-sample joint aggregation step and merges the records together. 
-#													            At each position of the input gVCFs, this tool will combine all spanning records, produce correct genotype likelihoods, re-genotype the newly merged record, and then re-annotate it.	
-# -R 												            reference genome will follow this tag
-# referenceGenome									            path and name of reference genome 
-# --variant											            One or more input gVCF files. Must be declared before each sample input and then followed by the sample gvcf file 
-# sampleID.rmdup.gvcf								            sample gvcf file made in pervious step
-# -o												            declares output to follow 
-# Project.raw.vcf								                Name of output. Include the .vcf and include "raw" because this is an unfiltered vcf file. 
+# java												                                    program called 
+# -Xmx16g 											                                  declares memory
+# GenomeAnalysisTK.jar 								                            path to GATK jar file 
+# -T												                                      declares that a tool command will follow 
+# GenotypeGVCFs										                                GenotypeGVCFs merges gVCF records that were produced in the previous step. This tool performs the multi-sample joint aggregation step and merges the records together. 
+#													                                        At each position of the input gVCFs, this tool will combine all spanning records, produce correct genotype likelihoods, re-genotype the newly merged record, and then re-annotate it.	
+# -R 												                                      reference genome will follow this tag
+# referenceGenome									                                path and name of reference genome 
+# --variant											                                  One or more input gVCF files. Must be declared before each sample input and then followed by the sample gvcf file 
+# sampleID.rmdup.gvcf								                              sample gvcf file made in pervious step
+# -o												                                      declares output to follow 
+# Project.raw.vcf								                                  Name of output. Include the .vcf and include "raw" because this is an unfiltered vcf file. 
 
 # SBATCH script - 
 sbatch NameOfSBATCHscript.sh 
@@ -608,15 +608,15 @@ sbatch NameOfSBATCHscript.sh
 # comma-separated list of variant types to select. Site is selected if any of the ALT alleles is of the type requested. 
 # 
 # Example command: $bcftools view Project.raw.vcf -m2 -M2 -v snps > Project.ONLYbiallelicSNPSites.vcf
-# bcftools											            program called 
-# view 												            tells bcftools to open and view the the VCF that needs to be filtered
-# Project.raw.vcf						                        name of the raw VCF 
-# -m2												            prints at most 2 alleles in the REF column (reference) 
-# -M2												            prints at most 2 alleles in the ALT column (alternate)
-# -v 												            selects for "types". Types are determined by comparing the REF and ALT alleles in the VCF record not INFO tags like INFO/INDEL or INFO/VT
-# snps 												            type snps selects for only SNP sites and will exclude all indels 
-# >													            directs to output 
-# Project.ONLYbiallelicSNPSites.vcf		                    	name and path of output VCF that now only contains biallelic sites and no indels 
+# bcftools											                              program called 
+# view 												                                tells bcftools to open and view the the VCF that needs to be filtered
+# Project.raw.vcf						                                  name of the raw VCF 
+# -m2												                                  prints at most 2 alleles in the REF column (reference) 
+# -M2												                                  prints at most 2 alleles in the ALT column (alternate)
+# -v 												                                  selects for "types". Types are determined by comparing the REF and ALT alleles in the VCF record not INFO tags like INFO/INDEL or INFO/VT
+# snps 												                                type snps selects for only SNP sites and will exclude all indels 
+# >													                                  directs to output 
+# Project.ONLYbiallelicSNPSites.vcf		                    	  name and path of output VCF that now only contains biallelic sites and no indels 
 
 # SBATCH script - 
 sbatch NameOfSBATCHscript.sh 
@@ -627,20 +627,20 @@ sbatch NameOfSBATCHscript.sh
 # Create 1 VCF per sample to help reduce how long it will take for GATK's ASEReadCounter to run 
 # To do this, use GATK's SelectVariants. 
 # Example command: $java -Xmx16g -jar GenomeAnalysisTK.jar -T SelectVariants -R gencode.GRCh38.fasta -V Project.ONLYbiallelicSNPSitess.vcf -o sampleID.ONLYbiallelicSNPSites.vcf -sn sampleID
-# java												            program called 
-# -Xmx16g 											            declares memory
-# -jar												            jar file 
-# GenomeAnalysisTK.jar 								            path to GATK jar file 
-# -T 												            declares that a tool command will follow 
-# SelectVariants 									            Select a subset of variants from a larger callset
-# -R												            reference genome to follow
-# gencode.GRCh38.fasta 						                    path and name of reference genome 
-# -V 												            A variant call set from which to select a subset
-# Project.ONLYbiallelicSNPSitess.vcf 			                path and name of the variant call set 
-# -o 												            output to follow
-# sampleID.ONLYbiallelicSNPSitess.vcf 		                    name of the new VCF file containing the selected subset of variants
-# -sn 												            sample name select
-# sampleID										                name of individual to be selected 
+# java												                                  program called 
+# -Xmx16g 											                                declares memory
+# -jar												                                  jar file 
+# GenomeAnalysisTK.jar 								                          path to GATK jar file 
+# -T 												                                    declares that a tool command will follow 
+# SelectVariants 									                              Select a subset of variants from a larger callset
+# -R												                                    reference genome to follow
+# gencode.GRCh38.fasta 						                              path and name of reference genome 
+# -V 												                                    A variant call set from which to select a subset
+# Project.ONLYbiallelicSNPSitess.vcf 			                      path and name of the variant call set 
+# -o 												                                    output to follow
+# sampleID.ONLYbiallelicSNPSitess.vcf 		                      name of the new VCF file containing the selected subset of variants
+# -sn 												                                  sample name select
+# sampleID										                                  name of individual to be selected 
 
 # SBATCH script - 
 sbatch NameOfSBATCHscript.sh 
